@@ -33,7 +33,7 @@ export function CourseCard({ course }: CourseCardProps) {
   };
 
   return (
-    <Link href={`/courses/${course.slug}`}>
+    <Link href={`/course/${course.slug}`}>
       <div className="group cursor-pointer">
         <Card className="bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-all duration-300 group-hover:border-[hsl(var(--medical-blue-500))] overflow-hidden">
           <div className="relative">
