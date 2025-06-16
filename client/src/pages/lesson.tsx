@@ -80,6 +80,10 @@ export default function Lesson() {
                   <TabsTrigger value="notes" className="data-[state=active]:border-b-2 data-[state=active]:border-medical-blue-500">
                     Notes
                   </TabsTrigger>
+                  <TabsTrigger value="plan" className="data-[state=active]:border-b-2 data-[state=active]:border-medical-blue-500">
+                    <BookOpen className="h-4 w-4 mr-2" />
+                    Lesson Plan
+                  </TabsTrigger>
                 </TabsList>
               </div>
               
@@ -117,6 +121,31 @@ export default function Lesson() {
                     <p className="text-sm">Note-taking feature coming soon!</p>
                   </div>
                 </div>
+              </TabsContent>
+
+              <TabsContent value="plan" className="p-6">
+                <h3 className="text-lg font-semibold mb-4">Lesson Plan</h3>
+                {lesson.sections && lesson.sections.length > 0 ? (
+                  <div className="space-y-3">
+                    {lesson.sections.map((section: string, index: number) => (
+                      <div key={index} className="flex items-center justify-between p-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
+                        <div className="flex items-center space-x-3">
+                          <div className="flex-shrink-0 w-6 h-6 bg-gray-200 dark:bg-gray-700 rounded-full flex items-center justify-center text-xs font-medium">
+                            {index + 1}
+                          </div>
+                          <span className="text-gray-900 dark:text-gray-100">{section}</span>
+                        </div>
+                        <Badge variant="secondary" className="text-xs">
+                          Coming soon
+                        </Badge>
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <div className="text-gray-500 dark:text-gray-400">
+                    <p>No lesson plan available for this lesson.</p>
+                  </div>
+                )}
               </TabsContent>
             </Tabs>
           </Card>
