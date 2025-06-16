@@ -1,0 +1,82 @@
+### GOAL
+Harvest only the public headings (no body text) from each e-LfH Abdominal Ultrasound session
+and wire them into RadAcademy as empty lesson templates.
+
+### SOURCE URL LIST
+(Replace with the real links if different)
+
+https://portal.e-lfh.org.uk/Component/Details/475153
+https://portal.e-lfh.org.uk/Component/Details/475156
+https://portal.e-lfh.org.uk/Component/Details/475159
+https://portal.e-lfh.org.uk/Component/Details/475162
+https://portal.e-lfh.org.uk/Component/Details/475165
+https://portal.e-lfh.org.uk/Component/Details/475168
+https://portal.e-lfh.org.uk/Component/Details/475171
+https://portal.e-lfh.org.uk/Component/Details/475174
+https://portal.e-lfh.org.uk/Component/Details/475177
+https://portal.e-lfh.org.uk/Component/Details/475180
+https://portal.e-lfh.org.uk/Component/Details/475737
+https://portal.e-lfh.org.uk/Component/Details/475183
+https://portal.e-lfh.org.uk/Component/Details/475186
+https://portal.e-lfh.org.uk/Component/Details/475189
+https://portal.e-lfh.org.uk/Component/Details/475192
+https://portal.e-lfh.org.uk/Component/Details/475195
+https://portal.e-lfh.org.uk/Component/Details/475476
+https://portal.e-lfh.org.uk/Component/Details/475198
+https://portal.e-lfh.org.uk/Component/Details/475201
+
+### TASKS
+1. **Create `/scripts/scrape_headings.ts`**
+   • Use `node-fetch` + `cheerio` (or axios + jsdom)  
+   • For each URL:
+       - Fetch the HTML (no authentication).  
+       - Grab the `<h1>` (session title).  
+       - Grab every `<h2>` or `<h3>` inside the main `entry-content` div (these are headings like “Equipment – Transducers”).  
+   • Output an array like:
+     ```ts
+     [{
+       id: "16_01",
+       title: "Abdominal Ultrasound: Introduction and Image Optimisation",
+       sections: [
+         "Session overview",
+         "Session introduction",
+         "Introduction",
+         "Common Indications for Abdominal Ultrasound",
+         …
+       ]
+     }, …]
+     ```
+
+   • Write the result to `data/us_abdo_lessons.json`.
+
+2. **Run the script automatically** when I type `npm run scrape:us-abdo`.
+   • Add this command to `package.json` scripts.
+
+3. **Inject the JSON into `server/storage.ts`**
+   • Find the `us-abdominal` course object.  
+   • Replace its current `lessons` value with
+     ```ts
+     require("../data/us_abdo_lessons.json").map((l:any) => ({
+       ...l,
+       description: "",          // to be authored later
+       externalUrl: "",          // blank for now
+       videoUrl: "",             // blank for now
+       quiz: []                  // blank for now
+     }))
+     ```
+
+4. **UI**
+   • On the Lesson page, if `sections` exists, render them as a bullet outline under “Lesson Plan”.  
+   • Each section bullet shows a grey “Coming soon” badge.
+
+5. **Licensing safeguard**
+   • Do NOT store any paragraph text, images, or quiz content — only heading strings.
+
+### ACCEPTANCE
+- `npm run scrape:us-abdo` creates `data/us_abdo_lessons.json`.
+- Visiting /modality/ultrasound → Abdominal course shows 19 lessons.
+- Opening the first lesson shows its section list with “Coming soon” badges.
+- No console errors; TypeScript passes `npm run lint`.
+
+### DON’T TOUCH
+- Auth flows, payments, certificate logic.

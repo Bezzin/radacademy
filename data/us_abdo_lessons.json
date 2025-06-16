@@ -1,0 +1,253 @@
+[
+  {
+    "id": "16_01",
+    "title": "Abdominal Ultrasound: Introduction and Image Optimisation",
+    "sections": [
+      "Session overview",
+      "Session introduction", 
+      "Introduction",
+      "Common Indications for Abdominal Ultrasound",
+      "Equipment – Transducers",
+      "Equipment – Ultrasound Machine",
+      "Image Optimisation",
+      "Gain and Time Gain Compensation",
+      "Depth and Focus",
+      "Frequency Selection",
+      "Session summary"
+    ]
+  },
+  {
+    "id": "16_02", 
+    "title": "Patient Preparation and Scanning Technique",
+    "sections": [
+      "Session overview",
+      "Patient Preparation",
+      "Fasting Requirements",
+      "Patient Positioning",
+      "Scanning Technique Fundamentals",
+      "Probe Handling and Pressure",
+      "Breathing Instructions",
+      "Scanning Planes and Orientation",
+      "Session summary"
+    ]
+  },
+  {
+    "id": "16_03",
+    "title": "Normal Liver Anatomy and Scanning Approach", 
+    "sections": [
+      "Session overview",
+      "Liver Anatomy Overview",
+      "Hepatic Segmentation",
+      "Vascular Anatomy",
+      "Standard Scanning Views",
+      "Subcostal Approach",
+      "Intercostal Approach", 
+      "Measurement Techniques",
+      "Session summary"
+    ]
+  },
+  {
+    "id": "16_04",
+    "title": "Liver Pathology Recognition",
+    "sections": [
+      "Session overview",
+      "Hepatomegaly Assessment",
+      "Fatty Infiltration",
+      "Focal Liver Lesions",
+      "Cystic Lesions",
+      "Solid Lesions",
+      "Cirrhosis and Portal Hypertension",
+      "Session summary"
+    ]
+  },
+  {
+    "id": "16_05",
+    "title": "Gallbladder and Biliary System",
+    "sections": [
+      "Session overview",
+      "Normal Gallbladder Anatomy",
+      "Scanning Technique for Gallbladder",
+      "Wall Thickness Assessment",
+      "Cholelithiasis",
+      "Cholecystitis",
+      "Biliary Dilatation",
+      "Common Bile Duct Assessment",
+      "Session summary"
+    ]
+  },
+  {
+    "id": "16_06",
+    "title": "Pancreatic Imaging Techniques",
+    "sections": [
+      "Session overview",
+      "Pancreatic Anatomy",
+      "Head, Body and Tail Identification",
+      "Scanning Challenges",
+      "Patient Positioning for Pancreas",
+      "Normal Pancreatic Appearance",
+      "Pancreatic Duct Assessment",
+      "Session summary"
+    ]
+  },
+  {
+    "id": "16_07",
+    "title": "Pancreatic Pathology",
+    "sections": [
+      "Session overview",
+      "Acute Pancreatitis",
+      "Chronic Pancreatitis",
+      "Pancreatic Masses",
+      "Pseudocysts",
+      "Ductal Dilatation",
+      "Session summary"
+    ]
+  },
+  {
+    "id": "16_08",
+    "title": "Right Kidney Assessment",
+    "sections": [
+      "Session overview",
+      "Renal Anatomy",
+      "Scanning Approach for Right Kidney",
+      "Coronal and Sagittal Views",
+      "Size Measurements",
+      "Cortical Thickness",
+      "Collecting System Assessment",
+      "Session summary"
+    ]
+  },
+  {
+    "id": "16_09",
+    "title": "Left Kidney and Comparative Assessment",
+    "sections": [
+      "Session overview",
+      "Left Kidney Scanning Technique",
+      "Comparative Kidney Assessment",
+      "Size and Echogenicity Comparison",
+      "Hydronephrosis Recognition",
+      "Renal Cysts",
+      "Session summary"
+    ]
+  },
+  {
+    "id": "16_10",
+    "title": "Spleen Examination",
+    "sections": [
+      "Session overview",
+      "Splenic Anatomy",
+      "Normal Spleen Measurements",
+      "Splenomegaly Assessment",
+      "Splenic Pathology",
+      "Session summary"
+    ]
+  },
+  {
+    "id": "16_11",
+    "title": "Retroperitoneal Structures",
+    "sections": [
+      "Session overview",
+      "Aorta Examination",
+      "Inferior Vena Cava",
+      "Lymph Node Assessment",
+      "Retroperitoneal Masses",
+      "Session summary"
+    ]
+  },
+  {
+    "id": "16_12",
+    "title": "Doppler Applications in Abdominal Scanning",
+    "sections": [
+      "Session overview",
+      "Color Doppler Principles",
+      "Portal Vein Assessment",
+      "Hepatic Artery Evaluation",
+      "Renal Doppler",
+      "Doppler Artifacts",
+      "Session summary"
+    ]
+  },
+  {
+    "id": "16_13",
+    "title": "Ascites and Fluid Collections",
+    "sections": [
+      "Session overview",
+      "Free Fluid Recognition",
+      "Ascites Distribution",
+      "Loculated Collections",
+      "Guided Procedures",
+      "Session summary"
+    ]
+  },
+  {
+    "id": "16_14",
+    "title": "Pediatric Abdominal Ultrasound",
+    "sections": [
+      "Session overview",
+      "Pediatric Scanning Considerations",
+      "Age-Specific Techniques",
+      "Hypertrophic Pyloric Stenosis",
+      "Intussusception",
+      "Session summary"
+    ]
+  },
+  {
+    "id": "16_15",
+    "title": "Emergency Abdominal Ultrasound",
+    "sections": [
+      "Session overview",
+      "FAST Examination",
+      "Acute Cholecystitis",
+      "Bowel Obstruction",
+      "Emergency Protocols",
+      "Session summary"
+    ]
+  },
+  {
+    "id": "16_16",
+    "title": "Quality Assurance and Documentation",
+    "sections": [
+      "Session overview",
+      "Image Quality Standards",
+      "Documentation Requirements",
+      "Report Writing",
+      "Quality Metrics",
+      "Session summary"
+    ]
+  },
+  {
+    "id": "16_17",
+    "title": "Advanced Imaging Techniques",
+    "sections": [
+      "Session overview",
+      "Contrast Enhanced Ultrasound",
+      "Elastography Applications",
+      "3D/4D Imaging",
+      "Fusion Imaging",
+      "Session summary"
+    ]
+  },
+  {
+    "id": "16_18",
+    "title": "Case Studies: Complex Abdominal Pathology",
+    "sections": [
+      "Session overview",
+      "Case Study 1: Complex Liver Disease",
+      "Case Study 2: Biliary Complications",
+      "Case Study 3: Renal Pathology",
+      "Case Study 4: Pancreatic Mass",
+      "Session summary"
+    ]
+  },
+  {
+    "id": "16_19",
+    "title": "Integration and Clinical Correlation",
+    "sections": [
+      "Session overview",
+      "Multidisciplinary Approach",
+      "Clinical Correlation",
+      "Limitations and Pitfalls",
+      "Future Developments",
+      "Course summary"
+    ]
+  }
+]
