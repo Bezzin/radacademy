@@ -38,7 +38,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   });
 
   // Get course by slug
-  app.get("/api/courses/:slug", async (req, res) => {
+  app.get("/api/courses/slug/:slug", async (req, res) => {
     const course = await storage.getCourseBySlug(req.params.slug);
     if (!course) {
       return res.status(404).json({ error: "Course not found" });
