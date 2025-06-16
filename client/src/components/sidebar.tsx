@@ -1,10 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
-import { Link } from "wouter";
+import { Link, useLocation } from "wouter";
 import { Brain, Radiation, Magnet, Bookmark, Clock, Download, Crown } from "lucide-react";
 import { Progress } from "@/components/ui/progress";
 import { Card, CardContent } from "@/components/ui/card";
 
 export function Sidebar() {
+  const [location] = useLocation();
+  
   const { data: enrollments } = useQuery({
     queryKey: ["/api/enrollments"],
   });
@@ -12,6 +14,8 @@ export function Sidebar() {
   const { data: courses } = useQuery({
     queryKey: ["/api/courses"],
   });
+
+  const coursesList = Array.isArray(courses) ? courses : [];
 
   const getIcon = (specialty: string) => {
     switch (specialty) {
@@ -26,6 +30,10 @@ export function Sidebar() {
     }
   };
 
+  const isActiveCourse = (courseSlug: string) => {
+    return location.startsWith(`/courses/${courseSlug}`);
+  };
+
   return (
     <aside className="w-64 bg-card shadow-sm border-r border-border min-h-screen">
       <div className="p-6">
@@ -34,29 +42,38 @@ export function Sidebar() {
             My Learning
           </h3>
           <div className="space-y-2">
-            {courses?.slice(0, 3).map((course: any) => (
-              <Link key={course.id} href={`/courses/${course.slug}`}>
-                <div className={`flex items-center justify-between p-3 rounded-lg border cursor-pointer transition-colors ${
-                  course.progress > 0
-                    ? "bg-medical-blue-50 dark:bg-medical-blue-900 border-[hsl(var(--medical-blue-500))]"
-                    : "hover:bg-gray-50 dark:hover:bg-gray-800 border-border"
-                }`}>
-                  <div className="flex items-center space-x-3">
-                    <div className={course.progress > 0 ? "text-medical-blue-600 dark:text-medical-blue-400" : "text-gray-400"}>
-                      {getIcon(course.specialty)}
+            {coursesList.slice(0, 3).map((course: any) => {
+              const isActive = isActiveCourse(course.slug);
+              return (
+                <Link key={course.id} href={`/courses/${course.slug}`}>
+                  <div className={`flex items-center justify-between p-3 rounded-lg cursor-pointer transition-colors ${
+                    isActive
+                      ? "bg-medical-blue-50 dark:bg-medical-blue-900 border-2 border-white dark:border-white"
+                      : course.progress > 0
+                        ? "bg-medical-blue-50 dark:bg-medical-blue-900 border-transparent hover:bg-medical-blue-100 dark:hover:bg-medical-blue-800"
+                        : "hover:bg-gray-50 dark:hover:bg-gray-800 border-transparent"
+                  } border-2`}>
+                    <div className="flex items-center space-x-3">
+                      <div className={
+                        isActive || course.progress > 0 
+                          ? "text-medical-blue-600 dark:text-medical-blue-400" 
+                          : "text-gray-400"
+                      }>
+                        {getIcon(course.specialty)}
+                      </div>
+                      <span className="text-sm font-medium truncate">{course.title}</span>
                     </div>
-                    <span className="text-sm font-medium truncate">{course.title}</span>
+                    <div className={`text-xs font-medium ${
+                      isActive || course.progress > 0
+                        ? "text-medical-blue-600 dark:text-medical-blue-400"
+                        : "text-gray-500"
+                    }`}>
+                      {course.progress || 0}%
+                    </div>
                   </div>
-                  <div className={`text-xs font-medium ${
-                    course.progress > 0
-                      ? "text-medical-blue-600 dark:text-medical-blue-400"
-                      : "text-gray-500"
-                  }`}>
-                    {course.progress || 0}%
-                  </div>
-                </div>
-              </Link>
-            ))}
+                </Link>
+              );
+            })}
           </div>
         </div>
 
