@@ -11,11 +11,9 @@ export function Sidebar() {
     queryKey: ["/api/enrollments"],
   });
 
-  const { data: courses } = useQuery({
+  const { data: courses } = useQuery<any[]>({
     queryKey: ["/api/courses"],
   });
-
-  const coursesList = Array.isArray(courses) ? courses : [];
 
   const getIcon = (specialty: string) => {
     switch (specialty) {
@@ -42,7 +40,7 @@ export function Sidebar() {
             My Learning
           </h3>
           <div className="space-y-2">
-            {coursesList.slice(0, 3).map((course: any) => {
+            {courses?.slice(0, 3).map((course: any) => {
               const isActive = isActiveCourse(course.slug);
               return (
                 <Link key={course.id} href={`/courses/${course.slug}`}>
