@@ -152,9 +152,19 @@ export default function Home() {
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
-          {modalityInfo?.map((modality: any) => (
-            <Link key={modality.id} href={`/courses?modality=${modality.id}`}>
-              <Card className="cursor-pointer hover:shadow-lg transition-shadow duration-200 border-2 hover:border-blue-200 dark:hover:border-blue-800">
+          {modalityInfo?.map((modality: any) => {
+            const modalitySlugMap: Record<string, string> = {
+              "CT": "ct",
+              "MRI": "mri", 
+              "X-Ray": "x-ray",
+              "US": "us",
+              "NM": "nm"
+            };
+            const slug = modalitySlugMap[modality.id] || modality.id.toLowerCase();
+            
+            return (
+              <Link key={modality.id} href={`/modality/${slug}`}>
+                <Card className="cursor-pointer hover:shadow-lg transition-shadow duration-200 border-2 hover:border-blue-200 dark:hover:border-blue-800">
                 <CardContent className="p-6 text-center">
                   <div className="mb-4 flex justify-center text-blue-600 dark:text-blue-400">
                     {getModalityIcon(modality.icon)}
@@ -171,7 +181,8 @@ export default function Home() {
                 </CardContent>
               </Card>
             </Link>
-          ))}
+            );
+          })}
         </div>
       </div>
 

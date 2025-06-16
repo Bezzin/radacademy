@@ -9,6 +9,8 @@ import { Sidebar } from "@/components/sidebar";
 import Home from "@/pages/home";
 import Dashboard from "@/pages/dashboard";
 import Courses from "@/pages/courses";
+import Modality from "@/pages/modality";
+import Course from "@/pages/course";
 import Lesson from "@/pages/lesson";
 import Community from "@/pages/community";
 import Certificates from "@/pages/certificates";
@@ -34,9 +36,8 @@ function Router() {
       <Route path="/" component={Home} />
       <Route path="/home" component={Home} />
       <Route path="/courses" component={Courses} />
-      <Route path="/courses/:slug">
-        {() => <Dashboard />}
-      </Route>
+      <Route path="/modality/:slug" component={Modality} />
+      <Route path="/course/:slug" component={Course} />
       <Route path="/lessons/:id" component={Lesson} />
       <Route path="/community" component={Community} />
       <Route path="/certificates" component={Certificates} />
