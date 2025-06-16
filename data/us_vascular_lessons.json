@@ -1,0 +1,106 @@
+[
+  {
+    "id": "18_01",
+    "title": "Vascular Ultrasound: Introduction and Image Optimisation",
+    "sections": [
+      "Session overview",
+      "Vascular Ultrasound Principles",
+      "Equipment and Transducer Selection",
+      "Doppler Optimization",
+      "Color and Power Doppler",
+      "Spectral Doppler Settings",
+      "Session summary"
+    ]
+  },
+  {
+    "id": "18_02",
+    "title": "Vascular Ultrasound: Lower Limb Arteries",
+    "sections": [
+      "Session overview",
+      "Lower Limb Arterial Anatomy",
+      "Scanning Technique",
+      "Normal Waveform Analysis",
+      "Stenosis Assessment",
+      "Peripheral Artery Disease",
+      "Session summary"
+    ]
+  },
+  {
+    "id": "18_03",
+    "title": "Vascular Ultrasound: Venous Insufficiency – Session 1",
+    "sections": [
+      "Session overview",
+      "Venous Anatomy Overview",
+      "Superficial Venous System",
+      "Deep Venous System",
+      "Venous Physiology",
+      "Reflux Assessment",
+      "Session summary"
+    ]
+  },
+  {
+    "id": "18_04",
+    "title": "Vascular Ultrasound: Venous Insufficiency – Session 2",
+    "sections": [
+      "Session overview",
+      "Advanced Reflux Testing",
+      "Perforator Assessment",
+      "Varicose Vein Evaluation",
+      "Treatment Planning",
+      "Post-intervention Assessment",
+      "Session summary"
+    ]
+  },
+  {
+    "id": "18_05",
+    "title": "Vascular Ultrasound: Extracranial Carotid & Vertebral Systems – Session 1",
+    "sections": [
+      "Session overview",
+      "Carotid Anatomy",
+      "Vertebral Anatomy",
+      "Scanning Approach",
+      "Normal Waveforms",
+      "Measurement Techniques",
+      "Session summary"
+    ]
+  },
+  {
+    "id": "18_06",
+    "title": "Vascular Ultrasound: Extracranial Carotid & Vertebral Systems – Session 2",
+    "sections": [
+      "Session overview",
+      "Stenosis Grading",
+      "Plaque Characterization",
+      "Occlusion Assessment",
+      "Vertebral Steal Syndrome",
+      "Clinical Correlation",
+      "Session summary"
+    ]
+  },
+  {
+    "id": "18_07",
+    "title": "Vascular Ultrasound: Lower Limb for DVT",
+    "sections": [
+      "Session overview",
+      "DVT Scanning Protocol",
+      "Compression Technique",
+      "Acute vs Chronic DVT",
+      "Thrombus Characterization",
+      "Clinical Correlation",
+      "Session summary"
+    ]
+  },
+  {
+    "id": "18_08",
+    "title": "Vascular Ultrasound: Vascular Access",
+    "sections": [
+      "Session overview",
+      "Access Site Assessment",
+      "Fistula Evaluation",
+      "Graft Assessment",
+      "Catheter-related Issues",
+      "Guidance Techniques",
+      "Session summary"
+    ]
+  }
+]
