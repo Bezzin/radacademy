@@ -6,6 +6,8 @@ import {
   type InsertDiscussion, type InsertCertificate, type CourseWithProgress,
   type LessonWithProgress, type DiscussionWithAuthor, type Modality, type ModalityCatalog, type ModalityInfo
 } from "@shared/schema";
+import { readFileSync } from 'fs';
+import { join } from 'path';
 
 export interface IStorage {
   // Users
@@ -171,9 +173,9 @@ export class MemStorage implements IStorage {
             coverImage: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200",
             published: true,
             authorId: demoUser.id,
-            rating: 0,
-            totalLessons: 0,
-            duration: "Coming Soon",
+            rating: 45,
+            totalLessons: 19,
+            duration: "24h 30m",
             createdAt: new Date(),
           },
           {
@@ -274,6 +276,38 @@ export class MemStorage implements IStorage {
       modalityGroup.courses.forEach(course => {
         this.courses.set(course.id, course);
       });
+    });
+
+    // Load US Abdominal lessons from JSON file
+    let usAbdoLessons: any[] = [];
+    try {
+      const jsonPath = join(process.cwd(), 'data', 'us_abdo_lessons.json');
+      const jsonData = readFileSync(jsonPath, 'utf-8');
+      usAbdoLessons = JSON.parse(jsonData);
+    } catch (error) {
+      console.warn('Could not load US Abdominal lessons data:', error);
+    }
+
+    // Find the US Abdominal course ID
+    const usAbdominalCourse = Array.from(this.courses.values()).find(course => course.slug === "us-abdominal");
+    const usAbdominalCourseId = usAbdominalCourse?.id || 2;
+
+    // Create US Abdominal lessons from scraped data
+    usAbdoLessons.forEach((lessonData, index) => {
+      const lesson = {
+        id: this.currentLessonId++,
+        title: lessonData.title,
+        slug: `us-abdo-${String(index + 1).padStart(2, '0')}`,
+        videoUrl: "", // Empty for now as specified
+        duration: "Coming Soon",
+        courseId: usAbdominalCourseId,
+        order: index + 1,
+        transcript: null,
+        objectives: [],
+        sections: lessonData.sections || [],
+        createdAt: new Date(),
+      };
+      this.lessons.set(lesson.id, lesson);
     });
 
     // Create demo lessons for CT Fundamentals

@@ -1,10 +1,11 @@
 import { useParams } from "wouter";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";
-import { ChevronLeft, ChevronRight, CheckCircle, Lock } from "lucide-react";
+import { ChevronLeft, ChevronRight, CheckCircle, Lock, BookOpen } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
+import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { VideoPlayer } from "@/components/video-player";
 import { QuizComponent } from "@/components/quiz-component";

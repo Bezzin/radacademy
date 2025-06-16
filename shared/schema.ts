@@ -41,6 +41,7 @@ export const lessons = pgTable("lessons", {
   order: integer("order").notNull(),
   transcript: text("transcript"),
   objectives: text("objectives").array(),
+  sections: text("sections").array(), // For lesson plan sections
   createdAt: timestamp("created_at").defaultNow(),
 });
 
