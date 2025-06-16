@@ -4,7 +4,7 @@ import {
   type Discussion, type Certificate, type InsertUser, type InsertCourse, 
   type InsertLesson, type InsertQuiz, type InsertProgress, type InsertEnrollment,
   type InsertDiscussion, type InsertCertificate, type CourseWithProgress,
-  type LessonWithProgress, type DiscussionWithAuthor
+  type LessonWithProgress, type DiscussionWithAuthor, type Modality, type ModalityCatalog, type ModalityInfo
 } from "@shared/schema";
 
 export interface IStorage {
@@ -13,8 +13,11 @@ export interface IStorage {
   getUserByEmail(email: string): Promise<User | undefined>;
   createUser(user: InsertUser): Promise<User>;
   
-  // Courses
-  getCourses(specialty?: string): Promise<CourseWithProgress[]>;
+  // Modalities and Courses
+  getModalityCatalog(): Promise<ModalityCatalog[]>;
+  getModalityInfo(): Promise<ModalityInfo[]>;
+  getCoursesByModality(modality: Modality): Promise<CourseWithProgress[]>;
+  getCourses(modality?: Modality): Promise<CourseWithProgress[]>;
   getCourse(id: number): Promise<Course | undefined>;
   getCourseBySlug(slug: string): Promise<Course | undefined>;
   createCourse(course: InsertCourse): Promise<Course>;
@@ -83,53 +86,195 @@ export class MemStorage implements IStorage {
     };
     this.users.set(demoUser.id, demoUser);
 
-    // Create demo courses
-    const courses = [
+    // Create demo catalog organized by modality
+    const demoCatalog: ModalityCatalog[] = [
       {
-        id: this.currentCourseId++,
-        title: "CT Fundamentals",
-        slug: "ct-fundamentals",
-        description: "Master the fundamentals of CT imaging with comprehensive lessons on anatomy, pathology, and interpretation techniques.",
-        specialty: "CT",
-        coverImage: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200",
-        published: true,
-        authorId: demoUser.id,
-        rating: 48,
-        totalLessons: 12,
-        duration: "8h 30m",
-        createdAt: new Date(),
+        modality: "CT",
+        courses: [
+          {
+            id: this.currentCourseId++,
+            title: "CT Fundamentals",
+            slug: "ct-fundamentals",
+            description: "Master the fundamentals of CT imaging with comprehensive lessons on anatomy, pathology, and interpretation techniques.",
+            modality: "CT",
+            coverImage: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200",
+            published: true,
+            authorId: demoUser.id,
+            rating: 48,
+            totalLessons: 12,
+            duration: "8h 30m",
+            createdAt: new Date(),
+          }
+        ]
       },
       {
-        id: this.currentCourseId++,
-        title: "Advanced MRI Interpretation",
-        slug: "advanced-mri-interpretation",
-        description: "Master advanced MRI sequences and pathology identification with detailed case studies and expert guidance.",
-        specialty: "MRI",
-        coverImage: "https://pixabay.com/get/gfc9ddbb0cd0888012cf7390449c8bd22086525d8deed9311025f5f633d6055174e1e721866a65992276b2a9fc86cf7c2234c251ca7e9fa32aa3c26a6ee88ed87_1280.jpg",
-        published: true,
-        authorId: demoUser.id,
-        rating: 48,
-        totalLessons: 16,
-        duration: "12h 15m",
-        createdAt: new Date(),
+        modality: "MRI",
+        courses: [
+          {
+            id: this.currentCourseId++,
+            title: "Advanced MRI Interpretation",
+            slug: "advanced-mri-interpretation",
+            description: "Master advanced MRI sequences and pathology identification with detailed case studies and expert guidance.",
+            modality: "MRI",
+            coverImage: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200",
+            published: true,
+            authorId: demoUser.id,
+            rating: 48,
+            totalLessons: 16,
+            duration: "12h 15m",
+            createdAt: new Date(),
+          }
+        ]
       },
       {
-        id: this.currentCourseId++,
-        title: "Chest X-Ray Mastery",
-        slug: "chest-xray-mastery",
-        description: "Comprehensive chest radiograph interpretation covering normal anatomy, common pathologies, and systematic approach.",
-        specialty: "X-Ray",
-        coverImage: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200",
-        published: true,
-        authorId: demoUser.id,
-        rating: 49,
-        totalLessons: 12,
-        duration: "6h 15m",
-        createdAt: new Date(),
+        modality: "X-Ray",
+        courses: [
+          {
+            id: this.currentCourseId++,
+            title: "Chest X-Ray Mastery",
+            slug: "chest-xray-mastery",
+            description: "Comprehensive chest radiograph interpretation covering normal anatomy, common pathologies, and systematic approach.",
+            modality: "X-Ray",
+            coverImage: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200",
+            published: true,
+            authorId: demoUser.id,
+            rating: 49,
+            totalLessons: 12,
+            duration: "6h 15m",
+            createdAt: new Date(),
+          }
+        ]
       },
+      {
+        modality: "US",
+        courses: [
+          {
+            id: this.currentCourseId++,
+            title: "Ultrasound – Gynaecological",
+            slug: "us-gyn",
+            description: "Coming soon - Comprehensive gynecological ultrasound imaging techniques and interpretation.",
+            modality: "US",
+            coverImage: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200",
+            published: true,
+            authorId: demoUser.id,
+            rating: 0,
+            totalLessons: 0,
+            duration: "Coming Soon",
+            createdAt: new Date(),
+          },
+          {
+            id: this.currentCourseId++,
+            title: "Ultrasound – Abdominal",
+            slug: "us-abdominal",
+            description: "Master abdominal ultrasound imaging with detailed exploration of liver, gallbladder, pancreas, kidneys, and abdominal vasculature. Learn systematic scanning techniques, normal anatomy recognition, and pathology identification through comprehensive case studies and hands-on practice sessions.",
+            modality: "US",
+            coverImage: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200",
+            published: true,
+            authorId: demoUser.id,
+            rating: 0,
+            totalLessons: 0,
+            duration: "Coming Soon",
+            createdAt: new Date(),
+          },
+          {
+            id: this.currentCourseId++,
+            title: "Ultrasound – Men's Health",
+            slug: "us-mens-health",
+            description: "Coming soon - Specialized ultrasound imaging for men's health applications.",
+            modality: "US",
+            coverImage: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200",
+            published: true,
+            authorId: demoUser.id,
+            rating: 0,
+            totalLessons: 0,
+            duration: "Coming Soon",
+            createdAt: new Date(),
+          },
+          {
+            id: this.currentCourseId++,
+            title: "Ultrasound – Vascular",
+            slug: "us-vascular",
+            description: "Coming soon - Comprehensive vascular ultrasound techniques and Doppler imaging.",
+            modality: "US",
+            coverImage: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200",
+            published: true,
+            authorId: demoUser.id,
+            rating: 0,
+            totalLessons: 0,
+            duration: "Coming Soon",
+            createdAt: new Date(),
+          },
+          {
+            id: this.currentCourseId++,
+            title: "Ultrasound – Musculoskeletal",
+            slug: "us-msk",
+            description: "Coming soon - Musculoskeletal ultrasound imaging for sports medicine and orthopedics.",
+            modality: "US",
+            coverImage: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200",
+            published: true,
+            authorId: demoUser.id,
+            rating: 0,
+            totalLessons: 0,
+            duration: "Coming Soon",
+            createdAt: new Date(),
+          },
+          {
+            id: this.currentCourseId++,
+            title: "Ultrasound – Head & Neck",
+            slug: "us-head-neck",
+            description: "Coming soon - Head and neck ultrasound imaging techniques and applications.",
+            modality: "US",
+            coverImage: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200",
+            published: true,
+            authorId: demoUser.id,
+            rating: 0,
+            totalLessons: 0,
+            duration: "Coming Soon",
+            createdAt: new Date(),
+          },
+          {
+            id: this.currentCourseId++,
+            title: "Ultrasound – Obstetric",
+            slug: "us-obstetric",
+            description: "Coming soon - Comprehensive obstetric ultrasound imaging and fetal assessment.",
+            modality: "US",
+            coverImage: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200",
+            published: true,
+            authorId: demoUser.id,
+            rating: 0,
+            totalLessons: 0,
+            duration: "Coming Soon",
+            createdAt: new Date(),
+          }
+        ]
+      },
+      {
+        modality: "NM",
+        courses: [
+          {
+            id: this.currentCourseId++,
+            title: "Nuclear Medicine Fundamentals",
+            slug: "nm-fundamentals",
+            description: "Coming soon - Introduction to nuclear medicine imaging techniques and radiopharmaceuticals.",
+            modality: "NM",
+            coverImage: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200",
+            published: true,
+            authorId: demoUser.id,
+            rating: 0,
+            totalLessons: 0,
+            duration: "Coming Soon",
+            createdAt: new Date(),
+          }
+        ]
+      }
     ];
 
-    courses.forEach(course => this.courses.set(course.id, course));
+    // Add all courses to the courses map
+    demoCatalog.forEach(modalityGroup => {
+      modalityGroup.courses.forEach(course => {
+        this.courses.set(course.id, course);
+      });
+    });
 
     // Create demo lessons for CT Fundamentals
     const ctLessons = [
@@ -249,9 +394,44 @@ export class MemStorage implements IStorage {
     return user;
   }
 
-  async getCourses(specialty?: string): Promise<CourseWithProgress[]> {
+  async getModalityCatalog(): Promise<ModalityCatalog[]> {
+    const modalities: Modality[] = ["CT", "MRI", "X-Ray", "US", "NM"];
+    
+    return modalities.map(modality => ({
+      modality,
+      courses: Array.from(this.courses.values()).filter(course => 
+        course.published && course.modality === modality
+      )
+    }));
+  }
+
+  async getModalityInfo(): Promise<ModalityInfo[]> {
+    const modalityMap = {
+      "CT": { name: "CT Scan", description: "Computed Tomography imaging", icon: "brain" },
+      "MRI": { name: "MRI", description: "Magnetic Resonance Imaging", icon: "magnet" },
+      "X-Ray": { name: "X-Ray", description: "Radiographic imaging", icon: "radiation" },
+      "US": { name: "Ultrasound", description: "Ultrasound imaging", icon: "waves" },
+      "NM": { name: "Nuclear Medicine", description: "Nuclear medicine imaging", icon: "atom" }
+    };
+
+    return Object.entries(modalityMap).map(([id, info]) => ({
+      id: id as Modality,
+      name: info.name,
+      description: info.description,
+      icon: info.icon,
+      courseCount: Array.from(this.courses.values()).filter(course => 
+        course.published && course.modality === id
+      ).length
+    }));
+  }
+
+  async getCoursesByModality(modality: Modality): Promise<CourseWithProgress[]> {
+    return this.getCourses(modality);
+  }
+
+  async getCourses(modality?: Modality): Promise<CourseWithProgress[]> {
     const coursesArray = Array.from(this.courses.values()).filter(course => 
-      course.published && (!specialty || course.specialty === specialty)
+      course.published && (!modality || course.modality === modality)
     );
 
     return coursesArray.map(course => {
@@ -262,6 +442,7 @@ export class MemStorage implements IStorage {
       
       return {
         ...course,
+        totalLessons: course.totalLessons || 0,
         progress: totalLessons > 0 ? Math.round((completedLessons / totalLessons) * 100) : 0,
         completedLessons,
         author: { name: author.name, avatarUrl: author.avatarUrl },

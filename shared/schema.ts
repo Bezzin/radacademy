@@ -2,6 +2,9 @@ import { pgTable, text, serial, integer, boolean, timestamp, jsonb } from "drizz
 import { createInsertSchema } from "drizzle-zod";
 import { z } from "zod";
 
+// Modality type definition
+export type Modality = "CT" | "MRI" | "X-Ray" | "US" | "NM";
+
 export const users = pgTable("users", {
   id: serial("id").primaryKey(),
   username: text("username").notNull().unique(),
@@ -18,7 +21,7 @@ export const courses = pgTable("courses", {
   title: text("title").notNull(),
   slug: text("slug").notNull().unique(),
   description: text("description").notNull(),
-  specialty: text("specialty").notNull(), // CT | MRI | X-Ray
+  modality: text("modality").notNull(), // CT | MRI | X-Ray | US | NM
   coverImage: text("cover_image").notNull(),
   published: boolean("published").default(false),
   authorId: integer("author_id").references(() => users.id),
@@ -163,4 +166,18 @@ export type LessonWithProgress = Lesson & {
 export type DiscussionWithAuthor = Discussion & {
   author: Pick<User, 'name' | 'avatarUrl'>;
   replies?: DiscussionWithAuthor[];
+};
+
+// Modality catalog types
+export type ModalityCatalog = {
+  modality: Modality;
+  courses: Course[];
+};
+
+export type ModalityInfo = {
+  id: Modality;
+  name: string;
+  description: string;
+  icon: string;
+  courseCount: number;
 };

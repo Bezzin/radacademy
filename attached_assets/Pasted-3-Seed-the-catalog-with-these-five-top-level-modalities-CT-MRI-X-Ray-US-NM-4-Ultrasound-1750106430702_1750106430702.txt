@@ -1,0 +1,56 @@
+3. Seed the catalog with these five top-level modalities (CT, MRI, X-Ray, US, NM).  
+4. **Ultrasound (US)** must contain the seven sub-courses below.  
+Give each course an `id`, `title`, the full **description** text supplied, and an empty `lessons` array for now.
+
+| id                    | title                              | description (use the long text) |
+|-----------------------|------------------------------------|---------------------------------|
+| us-gyn               | 15 Ultrasound – Gynaecological     | *leave blank for now*           |
+| us-abdominal         | 16 Ultrasound – Abdominal          | (paste the long Abdominal description I provided) |
+| us-mens-health       | 17 Ultrasound – Men's Health       | *blank* |
+| us-vascular          | 18 Ultrasound – Vascular           | *blank* |
+| us-msk               | 19 Ultrasound – Musculoskeletal    | *blank* |
+| us-head-neck         | 20 Ultrasound – Head & Neck        | *blank* |
+| us-obstetric         | 21 Ultrasound – Obstetric          | *blank* |
+
+### 2. ROUTING & PAGES
+1. **Home ( / )**  
+• Display one card per Modality (`CT`, `MRI`, `X-Ray`, `Ultrasound`, `Nuclear Medicine`).  
+• Each card shows a hero icon and course-count badge (e.g. “7 courses”).  
+• Clicking a card routes to  `/modality/[modalitySlug]`.
+
+2. **Modality page ( /modality/[slug] )**  
+• List the courses for that modality in a grid.  
+• Each course card has buttons: **Start / Continue**  +  **Course Info**.  
+  - **Course Info** opens a side panel (or modal) that shows `title`, full `description`, and “Not Attempted” status text.  
+• If `lessons.length === 0` show a “Coming Soon” tag.
+
+3. **Course page ( /course/[courseId] )**  
+• For now just render “Course content coming soon”.
+
+### 3. LEFT SIDEBAR (“My Learning”)
+*REMOVE* the hard-coded CT/MRI/X-ray list.  
+Instead:  
+• Show the user’s *in-progress* courses (if any).  
+• If none → show text “No active courses yet – pick a modality on Home.”
+
+### 4. COMPONENTS / UI
+1. Re-use existing Tailwind styling; keep dark theme.  
+2. Add a reusable **CourseInfoDialog** component (shadcn `<Dialog>` is fine).  
+3. Do **not** break any existing stats boxes on the Home dashboard.
+
+### 5. ACCEPTANCE CHECKLIST
+- Home shows 5 modality cards.  
+- Clicking **Ultrasound** shows 7 sub-courses.  
+- “Course Info” reveals the long description for “Ultrasound – Abdominal”.  
+- No console errors.  
+- All pages responsive.
+
+### 6. DON’T TOUCH
+- Authentication flows  
+- Payment code stubs  
+- Certificate logic
+
+### 7. AFTER CODE CHANGE
+- Run `npm run lint` and fix any TypeScript errors.  
+- Update demo seed so a fresh `npm run dev` shows the new structure.
+
