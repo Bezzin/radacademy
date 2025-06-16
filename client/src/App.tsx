@@ -6,7 +6,9 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Navigation } from "@/components/navigation";
 import { Sidebar } from "@/components/sidebar";
+import Home from "@/pages/home";
 import Dashboard from "@/pages/dashboard";
+import Courses from "@/pages/courses";
 import Lesson from "@/pages/lesson";
 import Community from "@/pages/community";
 import Certificates from "@/pages/certificates";
@@ -29,8 +31,9 @@ function Layout({ children }: { children: React.ReactNode }) {
 function Router() {
   return (
     <Switch>
-      <Route path="/" component={Dashboard} />
-      <Route path="/courses" component={Dashboard} />
+      <Route path="/" component={Home} />
+      <Route path="/home" component={Home} />
+      <Route path="/courses" component={Courses} />
       <Route path="/courses/:slug">
         {() => <Dashboard />}
       </Route>

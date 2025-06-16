@@ -10,14 +10,14 @@ export function Navigation() {
   const { theme, toggleTheme } = useThemeContext();
 
   const navItems = [
-    { href: "/", label: "Dashboard", key: "dashboard" },
+    { href: "/home", label: "Home", key: "home" },
     { href: "/courses", label: "Courses", key: "courses" },
     { href: "/community", label: "Community", key: "community" },
     { href: "/certificates", label: "Certificates", key: "certificates" },
   ];
 
   const isActive = (href: string) => {
-    if (href === "/") return location === "/";
+    if (href === "/home") return location === "/" || location === "/home";
     return location.startsWith(href);
   };
 
