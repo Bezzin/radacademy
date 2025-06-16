@@ -180,16 +180,16 @@ export class MemStorage implements IStorage {
           },
           {
             id: this.currentCourseId++,
-            title: "Ultrasound – Men's Health",
-            slug: "us-mens-health",
-            description: "Coming soon - Specialized ultrasound imaging for men's health applications.",
+            title: "Ultrasound – Gynaecological",
+            slug: "us-gynaecological",
+            description: "Comprehensive gynaecological ultrasound training covering reproductive system anatomy, menstrual cycle assessment, early pregnancy evaluation, and fertility imaging. Master systematic pelvic scanning techniques with detailed exploration of uterine and ovarian pathology through clinical case studies.",
             modality: "US",
             coverImage: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200",
             published: true,
             authorId: demoUser.id,
-            rating: 0,
-            totalLessons: 0,
-            duration: "Coming Soon",
+            rating: 42,
+            totalLessons: 9,
+            duration: "12h 15m",
             createdAt: new Date(),
           },
           {
@@ -301,6 +301,38 @@ export class MemStorage implements IStorage {
         videoUrl: "", // Empty for now as specified
         duration: "Coming Soon",
         courseId: usAbdominalCourseId,
+        order: index + 1,
+        transcript: null,
+        objectives: [],
+        sections: lessonData.sections || [],
+        createdAt: new Date(),
+      };
+      this.lessons.set(lesson.id, lesson);
+    });
+
+    // Load US Gynaecological lessons from JSON file
+    let usGynLessons: any[] = [];
+    try {
+      const jsonPath = join(process.cwd(), 'data', 'us_gynaecological_lessons.json');
+      const jsonData = readFileSync(jsonPath, 'utf-8');
+      usGynLessons = JSON.parse(jsonData);
+    } catch (error) {
+      console.warn('Could not load US Gynaecological lessons data:', error);
+    }
+
+    // Find the US Gynaecological course ID
+    const usGynaecologicalCourse = Array.from(this.courses.values()).find(course => course.slug === "us-gynaecological");
+    const usGynaecologicalCourseId = usGynaecologicalCourse?.id || 3;
+
+    // Create US Gynaecological lessons from data
+    usGynLessons.forEach((lessonData, index) => {
+      const lesson = {
+        id: this.currentLessonId++,
+        title: lessonData.title,
+        slug: `us-gyn-${String(index + 1).padStart(2, '0')}`,
+        videoUrl: "", // Empty for now as specified
+        duration: "Coming Soon",
+        courseId: usGynaecologicalCourseId,
         order: index + 1,
         transcript: null,
         objectives: [],

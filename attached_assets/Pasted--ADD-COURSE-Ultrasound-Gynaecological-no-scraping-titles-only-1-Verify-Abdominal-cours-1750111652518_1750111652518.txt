@@ -1,0 +1,36 @@
+### ADD COURSE: Ultrasound – Gynaecological  (no scraping, titles only)
+
+1. **Verify Abdominal course**
+   • Confirm course id "us-abdominal" still has 19 lessons (16_01 … 16_19).  
+   • If any are missing, add empty lesson objects so the total is 19.
+
+2. **Append this new course object to the catalog (server/storage.ts or equivalent):**
+{
+  id: "us-gyn",
+  title: "Ultrasound – Gynaecological",
+  modality: "US",
+  description: "",
+  lessons: [
+    { id: "15_01", title: "Gynaecological Ultrasound: Introduction and Image Optimisation", description:"", sections:[], videoUrl:"", externalUrl:"", durationSec:0, quiz:[], status:"notAttempted" },
+    { id: "15_02", title: "Gynaecological Ultrasound: Children and Adolescents",            description:"", sections:[], videoUrl:"", externalUrl:"", durationSec:0, quiz:[], status:"notAttempted" },
+    { id: "15_03", title: "Gynaecological Ultrasound: The Uterus",                           description:"", sections:[], videoUrl:"", externalUrl:"", durationSec:0, quiz:[], status:"notAttempted" },
+    { id: "15_04", title: "Gynaecological Ultrasound: The Ovaries and Adnexa",               description:"", sections:[], videoUrl:"", externalUrl:"", durationSec:0, quiz:[], status:"notAttempted" },
+    { id: "15_05", title: "Gynaecological Ultrasound: The Menstrual Cycle",                  description:"", sections:[], videoUrl:"", externalUrl:"", durationSec:0, quiz:[], status:"notAttempted" },
+    { id: "15_06", title: "Gynaecological Ultrasound: Normal Early Pregnancy",               description:"", sections:[], videoUrl:"", externalUrl:"", durationSec:0, quiz:[], status:"notAttempted" },
+    { id: "15_07", title: "Gynaecological Ultrasound: Abnormal Early Pregnancy",             description:"", sections:[], videoUrl:"", externalUrl:"", durationSec:0, quiz:[], status:"notAttempted" },
+    { id: "15_08", title: "Gynaecological Ultrasound: Postmenopausal Pelvis",                description:"", sections:[], videoUrl:"", externalUrl:"", durationSec:0, quiz:[], status:"notAttempted" },
+    { id: "15_09", title: "Gynaecological Ultrasound: Fertility",                            description:"", sections:[], videoUrl:"", externalUrl:"", durationSec:0, quiz:[], status:"notAttempted" }
+  ]
+}
+
+3. **UI updates**
+   • On the Ultrasound modality page show two cards: “Ultrasound – Abdominal” and “Ultrasound – Gynaecological”.  
+   • Each card opens its own course page, listing its lessons with “Not Attempted” chips.  
+   • Breadcrumb for the new course: Home › US › Ultrasound – Gynaecological.
+
+4. **Acceptance**
+   ✔ Ultrasound modality page displays exactly two course cards.  
+   ✔ “Ultrasound – Gynaecological” page lists the nine lessons above, in order.  
+   ✔ No 404s; `npm run lint` passes; browser console shows no errors.
+
+Do **not** modify authentication, payment, or other modality data.
