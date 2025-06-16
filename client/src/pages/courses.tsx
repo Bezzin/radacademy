@@ -1,23 +1,57 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
+import { useLocation } from "wouter";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { Brain, Magnet, Radiation, Waves, Atom, BookOpen } from "lucide-react";
 import { CourseCard } from "@/components/course-card";
+import { CourseInfoDialog } from "@/components/course-info-dialog";
 
 export default function Courses() {
-  const [selectedSpecialty, setSelectedSpecialty] = useState<string | undefined>(undefined);
+  const [location] = useLocation();
+  const [selectedModality, setSelectedModality] = useState<string | undefined>(undefined);
+  const [selectedCourse, setSelectedCourse] = useState<any>(null);
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+
+  // Extract modality from URL params
+  useEffect(() => {
+    const params = new URLSearchParams(location.split('?')[1] || '');
+    const modalityParam = params.get('modality');
+    if (modalityParam) {
+      setSelectedModality(modalityParam);
+    }
+  }, [location]);
 
   const { data: courses, isLoading } = useQuery({
-    queryKey: ["/api/courses", selectedSpecialty],
-    queryFn: () => fetch(`/api/courses${selectedSpecialty ? `?specialty=${selectedSpecialty}` : ''}`).then(res => res.json()),
+    queryKey: ["/api/courses", selectedModality],
+    queryFn: () => fetch(`/api/courses${selectedModality ? `?modality=${selectedModality}` : ''}`).then(res => res.json()),
   });
 
-  const specialties = [
-    { key: undefined, label: "All" },
-    { key: "CT", label: "CT" },
-    { key: "MRI", label: "MRI" },
-    { key: "X-Ray", label: "X-Ray" },
-  ];
+  const { data: modalityInfo = [] } = useQuery({
+    queryKey: ["/api/modalities/info"],
+  });
+
+  const getModalityIcon = (icon: string) => {
+    switch (icon) {
+      case "brain":
+        return <Brain className="h-4 w-4" />;
+      case "magnet":
+        return <Magnet className="h-4 w-4" />;
+      case "radiation":
+        return <Radiation className="h-4 w-4" />;
+      case "waves":
+        return <Waves className="h-4 w-4" />;
+      case "atom":
+        return <Atom className="h-4 w-4" />;
+      default:
+        return <BookOpen className="h-4 w-4" />;
+    }
+  };
+
+  const handleCourseInfo = (course: any) => {
+    setSelectedCourse(course);
+    setIsDialogOpen(true);
+  };
 
   return (
     <div className="p-8">
@@ -35,16 +69,25 @@ export default function Courses() {
         <CardHeader>
           <div className="flex items-center justify-between">
             <CardTitle className="text-xl">Available Courses</CardTitle>
-            <div className="flex space-x-2">
-              {specialties.map((specialty) => (
+            <div className="flex space-x-2 flex-wrap gap-2">
+              <Button
+                size="sm"
+                variant={selectedModality === undefined ? "default" : "outline"}
+                onClick={() => setSelectedModality(undefined)}
+                className={selectedModality === undefined ? "bg-medical-blue text-white" : ""}
+              >
+                All Modalities
+              </Button>
+              {modalityInfo.map((modality: any) => (
                 <Button
-                  key={specialty.key || "all"}
+                  key={modality.id}
                   size="sm"
-                  variant={selectedSpecialty === specialty.key ? "default" : "outline"}
-                  onClick={() => setSelectedSpecialty(specialty.key)}
-                  className={selectedSpecialty === specialty.key ? "bg-medical-blue text-white" : ""}
+                  variant={selectedModality === modality.id ? "default" : "outline"}
+                  onClick={() => setSelectedModality(modality.id)}
+                  className={`flex items-center gap-2 ${selectedModality === modality.id ? "bg-medical-blue text-white" : ""}`}
                 >
-                  {specialty.label}
+                  {getModalityIcon(modality.icon)}
+                  {modality.name}
                 </Button>
               ))}
             </div>
@@ -58,18 +101,27 @@ export default function Courses() {
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {courses?.map((course: any) => (
-                <CourseCard key={course.id} course={course} />
+                <div key={course.id} onClick={() => handleCourseInfo(course)}>
+                  <CourseCard course={course} />
+                </div>
               ))}
             </div>
           )}
 
           {courses?.length === 0 && !isLoading && (
             <div className="text-center py-12 text-gray-500 dark:text-gray-400">
-              <p>No courses found for the selected specialty.</p>
+              <p>No courses found for the selected modality.</p>
             </div>
           )}
         </CardContent>
       </Card>
+
+      {/* Course Info Dialog */}
+      <CourseInfoDialog
+        course={selectedCourse}
+        open={isDialogOpen}
+        onOpenChange={setIsDialogOpen}
+      />
     </div>
   );
 }
