@@ -1,0 +1,87 @@
+You are a senior full-stack engineer.  
+Create a brand-new monorepo for a **Radiology-Education SaaS** (codename: “RadAcademy”) with the following baseline:
+
+TECH STACK
+──────────
+• **Next.js 14** with **TypeScript** (app router) for the web client  
+• **Tailwind CSS** + @headlessui for styling & dark-mode toggle  
+• **tRPC** for type-safe API calls from client to server  
+• **Prisma ORM** with **PostgreSQL** (use Prisma SQLite locally)  
+• **NextAuth** (credentials + OAuth) for auth; email/password + Google login  
+• **Stripe** subscriptions (annual & monthly plans) with 14-day trial + web-hook handling  
+• **Clerk** OR built-in NextAuth session store (choose the simpler)  
+• **Supabase Storage** for video files + thumbnails  
+• **react-player** (or shadcn/ui video component) with variable speed & picture-in-picture  
+• **Zod** for schema validation  
+• **Vitest** for unit tests; Playwright for e2e tests  
+• Deploy-ready for **Vercel** (web) and **Railway** (Postgres)  
+
+FOLDER / MODULE STRUCTURE
+─────────────────────────
+apps/
+ └── web/
+      ├── app/                 (Next app router)
+      ├── components/          (reusable UI + shadcn/ui)
+      ├── features/
+      │     ├── auth/
+      │     ├── course/
+      │     ├── lesson/
+      │     ├── quiz/
+      │     ├── billing/
+      │     └── dashboard/
+      └── lib/                 (helpers – prisma, trpc, stripe)
+packages/
+ └── ui/                       (shared Tailwind + shadcn components)
+ └── config/                   (eslint, tsconfig, prettier)
+
+DATABASE SCHEMA (Prisma .sql)
+─────────────────────────────
+User            – id, name, email, role (ADMIN | STUDENT | INSTRUCTOR), stripeCustomerId  
+Course          – id, title, slug, description, specialty, coverImage, published, authorId  
+Lesson          – id, title, slug, videoUrl, durationSec, courseId, order  
+Quiz            – id, lessonId, question, choices(JSON), answerIdx  
+Progress        – id, userId, lessonId, completedAt  
+Subscription    – id, userId, stripeSubId, status, currentPeriodEnd  
+DiscussionPost  – id, courseId, authorId, body, parentId (nullable)  
+
+ROUTES / PAGES
+──────────────
+/               – marketing landing page (hero, pricing, CTA)  
+/login, /signup – NextAuth pages  
+/dashboard      – list enrolled courses + progress bar  
+/courses/[slug] – course overview, instructor bio, lessons list  
+/lesson/[id]    – video player, transcript tab, quiz tab  
+/community      – simple forum (nested comments)  
+/billing        – Stripe customer portal embed  
+
+MVP FUNCTIONAL REQUIREMENTS
+───────────────────────────
+1. **User onboarding** – signup, email verification, profile page  
+2. **Subscription paywall** – lock course content until active plan OR trial  
+3. **Course CRUD** – admin UI to create/edit course, upload video to Supabase, auto-generate thumbnail  
+4. **Lesson player** – video playback (0.5-2×), transcript (auto-generated via OpenAI Whisper endpoint stub; leave TODO)  
+5. **Quizzes** – multiple-choice after each lesson; store result; show score  
+6. **Progress tracking** – completion tick in sidebar, global % per course  
+7. **Community feed** – each course has discussion thread; markdown support  
+8. **Responsive & accessible** – mobile-first with Tailwind, keyboard nav  
+9. **Testing** – sample unit test for lesson progress; sample e2e test for auth+paywall  
+
+DEV INSTRUCTIONS
+────────────────
+• Initialise repo with pnpm workspaces.  
+• Add env.local.example with keys for DATABASE_URL, NEXTAUTH_SECRET, STRIPE_SECRET_KEY, SUPABASE_URL, SUPABASE_ANON_KEY.  
+• Provide a `seed.ts` script to create a demo admin, 1 sample course with 2 lessons and 1 quiz each.  
+• Ship with GitHub Actions CI: lint, type-check, test.  
+• Include a `README.md` that explains setup, `pnpm dev`, seeding DB, and deploy to Vercel/Railway in < 10 steps.  
+
+OPTIONAL STRETCH GOALS (mark TODO)
+──────────────────────────────────
+• AI chatbot tutor: RAG over course transcripts with OpenAI (serverless edge-function).  
+• Offline video download in PWA.  
+• CME-certificate PDF generation after finishing course + passing final quiz (html-to-pdf).  
+• Admin analytics dashboard (users, MRR, churn) using drizzle-orm + charts.  
+
+Deliver **all source files** ready to run locally (`pnpm install && pnpm dev`) in one go.  
+Comment code clearly, use ESLint + Prettier rules.  
+Generate dummy assets (video placeholder) and seed SQL dump.  
+Return the repo tree, key code snippets, and `README.md` first, then full files.  
