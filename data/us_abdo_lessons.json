@@ -18,236 +18,236 @@
   },
   {
     "id": "16_02", 
-    "title": "Patient Preparation and Scanning Technique",
+    "title": "Abdominal Ultrasound: Aorta – Session 1",
     "sections": [
       "Session overview",
-      "Patient Preparation",
-      "Fasting Requirements",
-      "Patient Positioning",
-      "Scanning Technique Fundamentals",
-      "Probe Handling and Pressure",
-      "Breathing Instructions",
-      "Scanning Planes and Orientation",
+      "Aortic Anatomy",
+      "Scanning Technique",
+      "Normal Measurements",
+      "Aneurysm Detection",
+      "Atherosclerotic Changes",
       "Session summary"
     ]
   },
   {
     "id": "16_03",
-    "title": "Normal Liver Anatomy and Scanning Approach", 
+    "title": "Abdominal Ultrasound: Aorta – Session 2", 
     "sections": [
       "Session overview",
-      "Liver Anatomy Overview",
-      "Hepatic Segmentation",
-      "Vascular Anatomy",
-      "Standard Scanning Views",
-      "Subcostal Approach",
-      "Intercostal Approach", 
-      "Measurement Techniques",
+      "Advanced Aortic Assessment",
+      "Branch Vessel Evaluation",
+      "Doppler Applications",
+      "Pathology Recognition",
+      "Clinical Correlation",
       "Session summary"
     ]
   },
   {
     "id": "16_04",
-    "title": "Liver Pathology Recognition",
+    "title": "Abdominal Ultrasound: Pancreas – Session 1",
     "sections": [
       "Session overview",
-      "Hepatomegaly Assessment",
-      "Fatty Infiltration",
-      "Focal Liver Lesions",
-      "Cystic Lesions",
-      "Solid Lesions",
-      "Cirrhosis and Portal Hypertension",
+      "Pancreatic Anatomy",
+      "Scanning Approach",
+      "Normal Appearance",
+      "Head and Body Assessment",
+      "Common Challenges",
       "Session summary"
     ]
   },
   {
     "id": "16_05",
-    "title": "Gallbladder and Biliary System",
+    "title": "Abdominal Ultrasound: Pancreas – Session 2",
     "sections": [
       "Session overview",
-      "Normal Gallbladder Anatomy",
-      "Scanning Technique for Gallbladder",
-      "Wall Thickness Assessment",
-      "Cholelithiasis",
-      "Cholecystitis",
-      "Biliary Dilatation",
-      "Common Bile Duct Assessment",
+      "Tail Assessment",
+      "Pathology Recognition",
+      "Ductal System",
+      "Mass Evaluation",
+      "Clinical Applications",
       "Session summary"
     ]
   },
   {
     "id": "16_06",
-    "title": "Pancreatic Imaging Techniques",
+    "title": "Abdominal Ultrasound: The Liver – Session 1",
     "sections": [
       "Session overview",
-      "Pancreatic Anatomy",
-      "Head, Body and Tail Identification",
-      "Scanning Challenges",
-      "Patient Positioning for Pancreas",
-      "Normal Pancreatic Appearance",
-      "Pancreatic Duct Assessment",
+      "Hepatic Anatomy",
+      "Segmental Division",
+      "Scanning Technique",
+      "Normal Echo Pattern",
+      "Size Assessment",
       "Session summary"
     ]
   },
   {
     "id": "16_07",
-    "title": "Pancreatic Pathology",
+    "title": "Abdominal Ultrasound: The Liver – Session 2",
     "sections": [
       "Session overview",
-      "Acute Pancreatitis",
-      "Chronic Pancreatitis",
-      "Pancreatic Masses",
-      "Pseudocysts",
-      "Ductal Dilatation",
+      "Focal Lesions",
+      "Diffuse Disease",
+      "Vascular Assessment",
+      "Portal System",
+      "Pathology Recognition",
       "Session summary"
     ]
   },
   {
     "id": "16_08",
-    "title": "Right Kidney Assessment",
+    "title": "Abdominal Ultrasound: The Gallbladder and Biliary Tree – Session 1",
     "sections": [
       "Session overview",
-      "Renal Anatomy",
-      "Scanning Approach for Right Kidney",
-      "Coronal and Sagittal Views",
-      "Size Measurements",
-      "Cortical Thickness",
-      "Collecting System Assessment",
+      "Gallbladder Anatomy",
+      "Normal Appearance",
+      "Wall Assessment",
+      "Stone Detection",
+      "Measurement Techniques",
       "Session summary"
     ]
   },
   {
     "id": "16_09",
-    "title": "Left Kidney and Comparative Assessment",
+    "title": "Abdominal Ultrasound: The Gallbladder and Biliary Tree – Session 2",
     "sections": [
       "Session overview",
-      "Left Kidney Scanning Technique",
-      "Comparative Kidney Assessment",
-      "Size and Echogenicity Comparison",
-      "Hydronephrosis Recognition",
-      "Renal Cysts",
+      "Biliary Tree Assessment",
+      "Common Bile Duct",
+      "Intrahepatic Ducts",
+      "Pathology Recognition",
+      "Clinical Correlation",
       "Session summary"
     ]
   },
   {
     "id": "16_10",
-    "title": "Spleen Examination",
+    "title": "Abdominal Ultrasound: Kidneys",
     "sections": [
       "Session overview",
-      "Splenic Anatomy",
-      "Normal Spleen Measurements",
-      "Splenomegaly Assessment",
-      "Splenic Pathology",
+      "Renal Anatomy",
+      "Bilateral Assessment",
+      "Size and Echogenicity",
+      "Collecting System",
+      "Pathology Recognition",
       "Session summary"
     ]
   },
   {
     "id": "16_11",
-    "title": "Retroperitoneal Structures",
+    "title": "Abdominal Ultrasound: Bladder",
     "sections": [
       "Session overview",
-      "Aorta Examination",
-      "Inferior Vena Cava",
-      "Lymph Node Assessment",
-      "Retroperitoneal Masses",
+      "Bladder Anatomy",
+      "Filling Assessment",
+      "Wall Evaluation",
+      "Post-void Residual",
+      "Pathology Detection",
       "Session summary"
     ]
   },
   {
     "id": "16_12",
-    "title": "Doppler Applications in Abdominal Scanning",
+    "title": "Abdominal Ultrasound: Spleen",
     "sections": [
       "Session overview",
-      "Color Doppler Principles",
-      "Portal Vein Assessment",
-      "Hepatic Artery Evaluation",
-      "Renal Doppler",
-      "Doppler Artifacts",
+      "Splenic Anatomy",
+      "Size Assessment",
+      "Echo Pattern",
+      "Splenomegaly",
+      "Focal Lesions",
       "Session summary"
     ]
   },
   {
     "id": "16_13",
-    "title": "Ascites and Fluid Collections",
+    "title": "Abdominal Ultrasound: Miscellaneous",
     "sections": [
       "Session overview",
-      "Free Fluid Recognition",
-      "Ascites Distribution",
-      "Loculated Collections",
-      "Guided Procedures",
+      "Retroperitoneal Structures",
+      "Ascites Assessment",
+      "Bowel Evaluation",
+      "Unusual Findings",
+      "Technical Considerations",
       "Session summary"
     ]
   },
   {
     "id": "16_14",
-    "title": "Pediatric Abdominal Ultrasound",
+    "title": "Abdominal Ultrasound: The FAST Scan",
     "sections": [
       "Session overview",
-      "Pediatric Scanning Considerations",
-      "Age-Specific Techniques",
-      "Hypertrophic Pyloric Stenosis",
-      "Intussusception",
+      "FAST Protocol",
+      "Trauma Assessment",
+      "Free Fluid Detection",
+      "Systematic Approach",
+      "Emergency Applications",
       "Session summary"
     ]
   },
   {
     "id": "16_15",
-    "title": "Emergency Abdominal Ultrasound",
+    "title": "Abdominal Ultrasound: Adult Liver Transplant",
     "sections": [
       "Session overview",
-      "FAST Examination",
-      "Acute Cholecystitis",
-      "Bowel Obstruction",
-      "Emergency Protocols",
+      "Transplant Anatomy",
+      "Vascular Assessment",
+      "Complications",
+      "Follow-up Protocol",
+      "Doppler Applications",
       "Session summary"
     ]
   },
   {
     "id": "16_16",
-    "title": "Quality Assurance and Documentation",
+    "title": "Abdominal Ultrasound: Renal Transplant",
     "sections": [
       "Session overview",
-      "Image Quality Standards",
-      "Documentation Requirements",
-      "Report Writing",
-      "Quality Metrics",
+      "Transplant Location",
+      "Vascular Evaluation",
+      "Parenchymal Assessment",
+      "Complications",
+      "Long-term Monitoring",
       "Session summary"
     ]
   },
   {
     "id": "16_17",
-    "title": "Advanced Imaging Techniques",
+    "title": "Abdominal Ultrasound: Paediatric Renal",
     "sections": [
       "Session overview",
-      "Contrast Enhanced Ultrasound",
-      "Elastography Applications",
-      "3D/4D Imaging",
-      "Fusion Imaging",
+      "Pediatric Considerations",
+      "Age-specific Technique",
+      "Congenital Anomalies",
+      "Pathology Recognition",
+      "Growth Assessment",
       "Session summary"
     ]
   },
   {
     "id": "16_18",
-    "title": "Case Studies: Complex Abdominal Pathology",
+    "title": "Abdominal Ultrasound: Paediatric Bowel",
     "sections": [
       "Session overview",
-      "Case Study 1: Complex Liver Disease",
-      "Case Study 2: Biliary Complications",
-      "Case Study 3: Renal Pathology",
-      "Case Study 4: Pancreatic Mass",
+      "Bowel Ultrasound Technique",
+      "Pyloric Stenosis",
+      "Intussusception",
+      "Appendicitis",
+      "Pediatric Applications",
       "Session summary"
     ]
   },
   {
     "id": "16_19",
-    "title": "Integration and Clinical Correlation",
+    "title": "Abdominal and Thoracic Ultrasound: Lung Ultrasound",
     "sections": [
       "Session overview",
-      "Multidisciplinary Approach",
-      "Clinical Correlation",
-      "Limitations and Pitfalls",
-      "Future Developments",
-      "Course summary"
+      "Lung Ultrasound Principles",
+      "Pleural Assessment",
+      "Lung Pathology",
+      "Point-of-care Applications",
+      "Integration with Abdominal Scanning",
+      "Session summary"
     ]
   }
 ]

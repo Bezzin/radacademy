@@ -1,0 +1,65 @@
+### TASK: Verify & populate “Ultrasound – Abdominal” lessons
+
+Context  
+• Navigation is now correct: Home → Ultrasound (modality) → Ultrasound – Abdominal (course) opens without 404.  
+• The Ultrasound – Abdominal course **must** list exactly 19 lessons.
+
+Required lesson list (ID + Title)  
+16_01  Abdominal Ultrasound: Introduction and Image Optimisation  
+16_02  Abdominal Ultrasound: Aorta – Session 1  
+16_03  Abdominal Ultrasound: Aorta – Session 2  
+16_04  Abdominal Ultrasound: Pancreas – Session 1  
+16_05  Abdominal Ultrasound: Pancreas – Session 2  
+16_06  Abdominal Ultrasound: The Liver – Session 1  
+16_07  Abdominal Ultrasound: The Liver – Session 2  
+16_08  Abdominal Ultrasound: The Gallbladder and Biliary Tree – Session 1  
+16_09  Abdominal Ultrasound: The Gallbladder and Biliary Tree – Session 2  
+16_10  Abdominal Ultrasound: Kidneys  
+16_11  Abdominal Ultrasound: Bladder  
+16_12  Abdominal Ultrasound: Spleen  
+16_13  Abdominal Ultrasound: Miscellaneous  
+16_14  Abdominal Ultrasound: The FAST Scan  
+16_15  Abdominal Ultrasound: Adult Liver Transplant  
+16_16  Abdominal Ultrasound: Renal Transplant  
+16_17  Abdominal Ultrasound: Paediatric Renal  
+16_18  Abdominal Ultrasound: Paediatric Bowel  
+16_19  Abdominal and Thoracic Ultrasound: Lung Ultrasound  
+
+### WHAT TO DO
+1. **Data check**  
+   • Open `server/storage.ts` (or whichever file exports `demoCatalog`).  
+   • Locate the `us-abdominal` course object.  
+   • Ensure its `lessons` array contains **all 19** IDs above exactly once, in numeric order.
+
+2. **If any lesson is missing**  
+   • Add an object:  
+     ```ts
+     {
+       id: "16_XX",
+       title: "…",
+       sections: [],
+       description: "",
+       externalUrl: "",
+       videoUrl: "",
+       durationSec: 0,
+       quiz: [],
+       status: "notAttempted"
+     }
+     ```  
+   • Do **not** import any copyrighted text—titles only.
+
+3. **UI update**  
+   • On `/course/[courseId]` (`us-abdominal`) render a lessons list/table beneath the breadcrumb.  
+     - Show: Title • “Favourite” icon button • small “Info” button • status chip (“Not Attempted”).  
+   • Keep breadcrumb `Home › US › Ultrasound – Abdominal` at the top.  
+   • Clicking a lesson should stay on the page for now (we’ll add lesson pages later).
+
+4. **Test / Acceptance**  
+   ✅ Home → Ultrasound shows Ultrasound – Abdominal card.  
+   ✅ Opening that card now displays a list of 19 lessons in the order above.  
+   ✅ No duplicates, no missing lessons.  
+   ✅ TypeScript passes `npm run lint` and there are no console errors.
+
+### DON’T TOUCH  
+• Auth, payment flows, or other modality data.  
+• Existing scraping script—only add missing lesson stubs if needed.
