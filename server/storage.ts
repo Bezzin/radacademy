@@ -194,6 +194,20 @@ export class MemStorage implements IStorage {
           },
           {
             id: this.currentCourseId++,
+            title: "Ultrasound – Men's Health",
+            slug: "us-mens-health",
+            description: "Specialized ultrasound training for men's health applications including testicular assessment and prostate evaluation. Learn comprehensive scanning techniques for male reproductive system with focus on TRUS procedures and transperineal biopsy guidance.",
+            modality: "US",
+            coverImage: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200",
+            published: true,
+            authorId: demoUser.id,
+            rating: 38,
+            totalLessons: 3,
+            duration: "4h 45m",
+            createdAt: new Date(),
+          },
+          {
+            id: this.currentCourseId++,
             title: "Ultrasound – Vascular",
             slug: "us-vascular",
             description: "Coming soon - Comprehensive vascular ultrasound techniques and Doppler imaging.",
@@ -333,6 +347,38 @@ export class MemStorage implements IStorage {
         videoUrl: "", // Empty for now as specified
         duration: "Coming Soon",
         courseId: usGynaecologicalCourseId,
+        order: index + 1,
+        transcript: null,
+        objectives: [],
+        sections: lessonData.sections || [],
+        createdAt: new Date(),
+      };
+      this.lessons.set(lesson.id, lesson);
+    });
+
+    // Load US Men's Health lessons from JSON file
+    let usMensHealthLessons: any[] = [];
+    try {
+      const jsonPath = join(process.cwd(), 'data', 'us_mens_health_lessons.json');
+      const jsonData = readFileSync(jsonPath, 'utf-8');
+      usMensHealthLessons = JSON.parse(jsonData);
+    } catch (error) {
+      console.warn('Could not load US Men\'s Health lessons data:', error);
+    }
+
+    // Find the US Men's Health course ID
+    const usMensHealthCourse = Array.from(this.courses.values()).find(course => course.slug === "us-mens-health");
+    const usMensHealthCourseId = usMensHealthCourse?.id || 5;
+
+    // Create US Men's Health lessons from data
+    usMensHealthLessons.forEach((lessonData, index) => {
+      const lesson = {
+        id: this.currentLessonId++,
+        title: lessonData.title,
+        slug: `us-mens-${String(index + 1).padStart(2, '0')}`,
+        videoUrl: "", // Empty for now as specified
+        duration: "Coming Soon",
+        courseId: usMensHealthCourseId,
         order: index + 1,
         transcript: null,
         objectives: [],

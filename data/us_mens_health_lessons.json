@@ -1,0 +1,41 @@
+[
+  {
+    "id": "17_01",
+    "title": "Men's Health Ultrasound: Testes – Session 1",
+    "sections": [
+      "Session overview",
+      "Testicular Anatomy",
+      "Normal Testicular Appearance",
+      "Scanning Technique",
+      "Epididymal Assessment",
+      "Scrotal Wall Evaluation",
+      "Session summary"
+    ]
+  },
+  {
+    "id": "17_02",
+    "title": "Men's Health Ultrasound: Testes – Session 2",
+    "sections": [
+      "Session overview",
+      "Testicular Pathology",
+      "Tumor Detection",
+      "Inflammatory Conditions",
+      "Vascular Assessment",
+      "Doppler Applications",
+      "Session summary"
+    ]
+  },
+  {
+    "id": "17_03",
+    "title": "Men's Health Ultrasound: TRUS and Transperineal Biopsy of the Prostate Gland",
+    "sections": [
+      "Session overview",
+      "Prostate Anatomy",
+      "TRUS Technique",
+      "Biopsy Guidance",
+      "Transperineal Approach",
+      "Complications and Management",
+      "Session summary"
+    ]
+  }
+]
