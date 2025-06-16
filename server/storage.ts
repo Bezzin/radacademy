@@ -233,6 +233,34 @@ export class MemStorage implements IStorage {
             totalLessons: 11,
             duration: "16h 45m",
             createdAt: new Date(),
+          },
+          {
+            id: this.currentCourseId++,
+            title: "Ultrasound – Head & Neck",
+            slug: "us-head-neck",
+            description: "Specialized head and neck ultrasound imaging covering thyroid, parathyroid, salivary glands, and lymph node assessment. Master cranial ultrasound techniques and systematic evaluation of superficial neck masses with comprehensive pathology recognition.",
+            modality: "US",
+            coverImage: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200",
+            published: true,
+            authorId: demoUser.id,
+            rating: 39,
+            totalLessons: 5,
+            duration: "7h 30m",
+            createdAt: new Date(),
+          },
+          {
+            id: this.currentCourseId++,
+            title: "Ultrasound – Obstetric",
+            slug: "us-obstetric",
+            description: "Comprehensive obstetric ultrasound training from early pregnancy assessment to high-risk obstetric care. Learn fetal screening protocols, anomaly detection, growth assessment, and life-saving interventions with detailed clinical correlation and evidence-based practice.",
+            modality: "US",
+            coverImage: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200",
+            published: true,
+            authorId: demoUser.id,
+            rating: 46,
+            totalLessons: 5,
+            duration: "8h 15m",
+            createdAt: new Date(),
           }
         ]
       },
@@ -415,6 +443,70 @@ export class MemStorage implements IStorage {
         videoUrl: "", // Empty for now as specified
         duration: "Coming Soon",
         courseId: usMskCourseId,
+        order: index + 1,
+        transcript: null,
+        objectives: [],
+        sections: lessonData.sections || [],
+        createdAt: new Date(),
+      };
+      this.lessons.set(lesson.id, lesson);
+    });
+
+    // Load US Head & Neck lessons from JSON file
+    let usHeadNeckLessons: any[] = [];
+    try {
+      const jsonPath = join(process.cwd(), 'data', 'us_head_neck_lessons.json');
+      const jsonData = readFileSync(jsonPath, 'utf-8');
+      usHeadNeckLessons = JSON.parse(jsonData);
+    } catch (error) {
+      console.warn('Could not load US Head & Neck lessons data:', error);
+    }
+
+    // Find the US Head & Neck course ID
+    const usHeadNeckCourse = Array.from(this.courses.values()).find(course => course.slug === "us-head-neck");
+    const usHeadNeckCourseId = usHeadNeckCourse?.id || 8;
+
+    // Create US Head & Neck lessons from data
+    usHeadNeckLessons.forEach((lessonData, index) => {
+      const lesson = {
+        id: this.currentLessonId++,
+        title: lessonData.title,
+        slug: `us-hn-${String(index + 1).padStart(2, '0')}`,
+        videoUrl: "", // Empty for now as specified
+        duration: "Coming Soon",
+        courseId: usHeadNeckCourseId,
+        order: index + 1,
+        transcript: null,
+        objectives: [],
+        sections: lessonData.sections || [],
+        createdAt: new Date(),
+      };
+      this.lessons.set(lesson.id, lesson);
+    });
+
+    // Load US Obstetric lessons from JSON file
+    let usObstetricLessons: any[] = [];
+    try {
+      const jsonPath = join(process.cwd(), 'data', 'us_obstetric_lessons.json');
+      const jsonData = readFileSync(jsonPath, 'utf-8');
+      usObstetricLessons = JSON.parse(jsonData);
+    } catch (error) {
+      console.warn('Could not load US Obstetric lessons data:', error);
+    }
+
+    // Find the US Obstetric course ID
+    const usObstetricCourse = Array.from(this.courses.values()).find(course => course.slug === "us-obstetric");
+    const usObstetricCourseId = usObstetricCourse?.id || 9;
+
+    // Create US Obstetric lessons from data
+    usObstetricLessons.forEach((lessonData, index) => {
+      const lesson = {
+        id: this.currentLessonId++,
+        title: lessonData.title,
+        slug: `us-obs-${String(index + 1).padStart(2, '0')}`,
+        videoUrl: "", // Empty for now as specified
+        duration: "Coming Soon",
+        courseId: usObstetricCourseId,
         order: index + 1,
         transcript: null,
         objectives: [],

@@ -1,0 +1,67 @@
+[
+  {
+    "id": "20_01",
+    "title": "Head and Neck Ultrasound: Thyroid and Parathyroid",
+    "sections": [
+      "Session overview",
+      "Thyroid Anatomy",
+      "Normal Thyroid Appearance",
+      "Parathyroid Identification",
+      "Pathology Recognition",
+      "Guided Procedures",
+      "Session summary"
+    ]
+  },
+  {
+    "id": "20_02",
+    "title": "Head and Neck Ultrasound: Salivary Glands",
+    "sections": [
+      "Session overview",
+      "Salivary Gland Anatomy",
+      "Parotid Gland Assessment",
+      "Submandibular Gland Evaluation",
+      "Pathology Detection",
+      "Ductal Assessment",
+      "Session summary"
+    ]
+  },
+  {
+    "id": "20_03",
+    "title": "Head and Neck Ultrasound: Lymph Nodes",
+    "sections": [
+      "Session overview",
+      "Lymph Node Anatomy",
+      "Normal vs Abnormal Nodes",
+      "Size and Shape Assessment",
+      "Vascular Patterns",
+      "Metastatic Changes",
+      "Session summary"
+    ]
+  },
+  {
+    "id": "20_04",
+    "title": "Head and Neck Ultrasound: Cranial",
+    "sections": [
+      "Session overview",
+      "Cranial Ultrasound Principles",
+      "Neonatal Brain Assessment",
+      "Ventricular System",
+      "Pathology Recognition",
+      "Clinical Applications",
+      "Session summary"
+    ]
+  },
+  {
+    "id": "20_05",
+    "title": "Head and Neck Ultrasound: Lumps and Bumps",
+    "sections": [
+      "Session overview",
+      "Superficial Mass Assessment",
+      "Tissue Characterization",
+      "Cystic vs Solid Lesions",
+      "Vascular Assessment",
+      "Biopsy Guidance",
+      "Session summary"
+    ]
+  }
+]

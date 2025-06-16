@@ -1,0 +1,41 @@
+### ULTRASOUND UPDATE — PART 2
+Add the final two ultrasound courses.
+
+1. **Ultrasound – Head & Neck** (id: us-head-neck, 5 lessons)
+{
+  id: "us-head-neck",
+  title: "Ultrasound – Head & Neck",
+  modality: "US",
+  description: "",
+  lessons: [
+    { id:"20_01", title:"Head and Neck Ultrasound: Thyroid and Parathyroid", description:"", sections:[], videoUrl:"", externalUrl:"", durationSec:0, quiz:[], status:"notAttempted"},
+    { id:"20_02", title:"Head and Neck Ultrasound: Salivary Glands",         description:"", sections:[], videoUrl:"", externalUrl:"", durationSec:0, quiz:[], status:"notAttempted"},
+    { id:"20_03", title:"Head and Neck Ultrasound: Lymph Nodes",             description:"", sections:[], videoUrl:"", externalUrl:"", durationSec:0, quiz:[], status:"notAttempted"},
+    { id:"20_04", title:"Head and Neck Ultrasound: Cranial",                 description:"", sections:[], videoUrl:"", externalUrl:"", durationSec:0, quiz:[], status:"notAttempted"},
+    { id:"20_05", title:"Head and Neck Ultrasound: Lumps and Bumps",         description:"", sections:[], videoUrl:"", externalUrl:"", durationSec:0, quiz:[], status:"notAttempted"}
+  ]
+}
+
+2. **Ultrasound – Obstetric** (id: us-obstetric, 5 lessons)
+{
+  id: "us-obstetric",
+  title: "Ultrasound – Obstetric",
+  modality: "US",
+  description: "",
+  lessons: [
+    { id:"21_01", title:"Ultrasound: Introduction to Obstetric Ultrasound and Early Pregnancy", description:"", sections:[], videoUrl:"", externalUrl:"", durationSec:0, quiz:[], status:"notAttempted"},
+    { id:"21_02", title:"Ultrasound: Fetal Screening (Obstetric)",                               description:"", sections:[], videoUrl:"", externalUrl:"", durationSec:0, quiz:[], status:"notAttempted"},
+    { id:"21_03", title:"Ultrasound: High Risk Pregnancy (Obstetric)",                           description:"", sections:[], videoUrl:"", externalUrl:"", durationSec:0, quiz:[], status:"notAttempted"},
+    { id:"21_04", title:"Obstetric Ultrasound Multiple Choice Quizzes",                          description:"", sections:[], videoUrl:"", externalUrl:"", durationSec:0, quiz:[], status:"notAttempted"},
+    { id:"21_05", title:"Ultrasound: Saving Babies Lives",                                       description:"", sections:[], videoUrl:"", externalUrl:"", durationSec:0, quiz:[], status:"notAttempted"}
+  ]
+}
+
+3. **Acceptance for Part 2**
+   • Ultrasound modality page now shows SEVEN cards in total:  
+     Abdominal 19  | Gynaecological 9 | Men’s Health 3 | Vascular 8 | MSK 11 | Head & Neck 5 | Obstetric 5.  
+   • Lesson counts match.  
+   • No duplicates or empty placeholders.  
+   • Lint passes and browser console clean.
+
+Do NOT modify auth or payment code.
