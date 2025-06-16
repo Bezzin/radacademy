@@ -10,10 +10,30 @@ export async function registerRoutes(app: Express): Promise<Server> {
     res.json(user);
   });
 
-  // Get courses with optional specialty filter
+  // Get modality information
+  app.get("/api/modalities/info", async (req, res) => {
+    try {
+      const modalityInfo = await storage.getModalityInfo();
+      res.json(modalityInfo);
+    } catch (error) {
+      res.status(500).json({ error: "Failed to fetch modality info" });
+    }
+  });
+
+  // Get modality catalog
+  app.get("/api/modalities/catalog", async (req, res) => {
+    try {
+      const catalog = await storage.getModalityCatalog();
+      res.json(catalog);
+    } catch (error) {
+      res.status(500).json({ error: "Failed to fetch modality catalog" });
+    }
+  });
+
+  // Get courses with optional modality filter
   app.get("/api/courses", async (req, res) => {
-    const { specialty } = req.query;
-    const courses = await storage.getCourses(specialty as string);
+    const { modality } = req.query;
+    const courses = await storage.getCourses(modality as any);
     res.json(courses);
   });
 

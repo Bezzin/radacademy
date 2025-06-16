@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "wouter";
-import { BookOpen, CheckCircle, Flame, Play } from "lucide-react";
+import { BookOpen, CheckCircle, Flame, Play, Brain, Magnet, Radiation, Waves, Atom } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
@@ -17,11 +17,36 @@ export default function Home() {
     queryKey: ["/api/dashboard/stats"],
   });
 
+  const { data: modalityInfo } = useQuery({
+    queryKey: ["/api/modalities/info"],
+  });
+
   // Type-safe access to stats properties
   const coursesInProgress = stats?.coursesInProgress || 0;
   const averageProgress = stats?.averageProgress || 0;
   const completedLessons = stats?.completedLessons || 0;
   const studyStreak = stats?.studyStreak || 0;
+
+  const getModalityIcon = (icon: string) => {
+    switch (icon) {
+      case "brain":
+        return <Brain className="h-8 w-8" />;
+      case "magnet":
+        return <Magnet className="h-8 w-8" />;
+      case "radiation":
+        return <Radiation className="h-8 w-8" />;
+      case "waves":
+        return <Waves className="h-8 w-8" />;
+      case "atom":
+        return <Atom className="h-8 w-8" />;
+      default:
+        return <BookOpen className="h-8 w-8" />;
+    }
+  };
+
+  const getModalitySlug = (modality: string) => {
+    return modality.toLowerCase().replace(/[^a-z0-9]/g, '-');
+  };
 
   return (
     <div className="p-8">
@@ -112,6 +137,43 @@ export default function Home() {
           </div>
         </CardContent>
       </Card>
+
+      {/* Modalities Section */}
+      <div className="mb-8">
+        <div className="flex items-center justify-between mb-6">
+          <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
+            Imaging Modalities
+          </h2>
+          <Link href="/courses">
+            <Button variant="outline" size="sm">
+              View All Courses
+            </Button>
+          </Link>
+        </div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
+          {modalityInfo?.map((modality: any) => (
+            <Link key={modality.id} href={`/courses?modality=${modality.id}`}>
+              <Card className="cursor-pointer hover:shadow-lg transition-shadow duration-200 border-2 hover:border-blue-200 dark:hover:border-blue-800">
+                <CardContent className="p-6 text-center">
+                  <div className="mb-4 flex justify-center text-blue-600 dark:text-blue-400">
+                    {getModalityIcon(modality.icon)}
+                  </div>
+                  <h3 className="text-lg font-semibold mb-2 text-gray-900 dark:text-white">
+                    {modality.name}
+                  </h3>
+                  <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">
+                    {modality.description}
+                  </p>
+                  <div className="text-xs text-gray-500 dark:text-gray-400">
+                    {modality.courseCount} {modality.courseCount === 1 ? 'course' : 'courses'}
+                  </div>
+                </CardContent>
+              </Card>
+            </Link>
+          ))}
+        </div>
+      </div>
 
       {/* Quick Actions */}
       <Card>
