@@ -210,56 +210,28 @@ export class MemStorage implements IStorage {
             id: this.currentCourseId++,
             title: "Ultrasound – Vascular",
             slug: "us-vascular",
-            description: "Coming soon - Comprehensive vascular ultrasound techniques and Doppler imaging.",
+            description: "Comprehensive vascular ultrasound training covering arterial and venous assessment, Doppler techniques, and interventional procedures. Master systematic evaluation of peripheral vessels, carotid systems, and venous insufficiency with detailed case studies and clinical applications.",
             modality: "US",
             coverImage: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200",
             published: true,
             authorId: demoUser.id,
-            rating: 0,
-            totalLessons: 0,
-            duration: "Coming Soon",
+            rating: 44,
+            totalLessons: 8,
+            duration: "11h 20m",
             createdAt: new Date(),
           },
           {
             id: this.currentCourseId++,
             title: "Ultrasound – Musculoskeletal",
             slug: "us-msk",
-            description: "Coming soon - Musculoskeletal ultrasound imaging for sports medicine and orthopedics.",
+            description: "Advanced musculoskeletal ultrasound training for orthopedic and sports medicine applications. Learn comprehensive joint assessment, tendon evaluation, guided injections, and pediatric hip screening with hands-on scanning techniques and pathology recognition.",
             modality: "US",
             coverImage: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200",
             published: true,
             authorId: demoUser.id,
-            rating: 0,
-            totalLessons: 0,
-            duration: "Coming Soon",
-            createdAt: new Date(),
-          },
-          {
-            id: this.currentCourseId++,
-            title: "Ultrasound – Head & Neck",
-            slug: "us-head-neck",
-            description: "Coming soon - Head and neck ultrasound imaging techniques and applications.",
-            modality: "US",
-            coverImage: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200",
-            published: true,
-            authorId: demoUser.id,
-            rating: 0,
-            totalLessons: 0,
-            duration: "Coming Soon",
-            createdAt: new Date(),
-          },
-          {
-            id: this.currentCourseId++,
-            title: "Ultrasound – Obstetric",
-            slug: "us-obstetric",
-            description: "Coming soon - Comprehensive obstetric ultrasound imaging and fetal assessment.",
-            modality: "US",
-            coverImage: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200",
-            published: true,
-            authorId: demoUser.id,
-            rating: 0,
-            totalLessons: 0,
-            duration: "Coming Soon",
+            rating: 41,
+            totalLessons: 11,
+            duration: "16h 45m",
             createdAt: new Date(),
           }
         ]
@@ -379,6 +351,70 @@ export class MemStorage implements IStorage {
         videoUrl: "", // Empty for now as specified
         duration: "Coming Soon",
         courseId: usMensHealthCourseId,
+        order: index + 1,
+        transcript: null,
+        objectives: [],
+        sections: lessonData.sections || [],
+        createdAt: new Date(),
+      };
+      this.lessons.set(lesson.id, lesson);
+    });
+
+    // Load US Vascular lessons from JSON file
+    let usVascularLessons: any[] = [];
+    try {
+      const jsonPath = join(process.cwd(), 'data', 'us_vascular_lessons.json');
+      const jsonData = readFileSync(jsonPath, 'utf-8');
+      usVascularLessons = JSON.parse(jsonData);
+    } catch (error) {
+      console.warn('Could not load US Vascular lessons data:', error);
+    }
+
+    // Find the US Vascular course ID
+    const usVascularCourse = Array.from(this.courses.values()).find(course => course.slug === "us-vascular");
+    const usVascularCourseId = usVascularCourse?.id || 6;
+
+    // Create US Vascular lessons from data
+    usVascularLessons.forEach((lessonData, index) => {
+      const lesson = {
+        id: this.currentLessonId++,
+        title: lessonData.title,
+        slug: `us-vasc-${String(index + 1).padStart(2, '0')}`,
+        videoUrl: "", // Empty for now as specified
+        duration: "Coming Soon",
+        courseId: usVascularCourseId,
+        order: index + 1,
+        transcript: null,
+        objectives: [],
+        sections: lessonData.sections || [],
+        createdAt: new Date(),
+      };
+      this.lessons.set(lesson.id, lesson);
+    });
+
+    // Load US MSK lessons from JSON file
+    let usMskLessons: any[] = [];
+    try {
+      const jsonPath = join(process.cwd(), 'data', 'us_msk_lessons.json');
+      const jsonData = readFileSync(jsonPath, 'utf-8');
+      usMskLessons = JSON.parse(jsonData);
+    } catch (error) {
+      console.warn('Could not load US MSK lessons data:', error);
+    }
+
+    // Find the US MSK course ID
+    const usMskCourse = Array.from(this.courses.values()).find(course => course.slug === "us-msk");
+    const usMskCourseId = usMskCourse?.id || 7;
+
+    // Create US MSK lessons from data
+    usMskLessons.forEach((lessonData, index) => {
+      const lesson = {
+        id: this.currentLessonId++,
+        title: lessonData.title,
+        slug: `us-msk-${String(index + 1).padStart(2, '0')}`,
+        videoUrl: "", // Empty for now as specified
+        duration: "Coming Soon",
+        courseId: usMskCourseId,
         order: index + 1,
         transcript: null,
         objectives: [],

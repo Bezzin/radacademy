@@ -1,0 +1,98 @@
+[
+  {
+    "id": "18_01",
+    "title": "Vascular Ultrasound: Introduction and Image Optimisation",
+    "sections": [
+      "Session overview",
+      "Introduction to Vascular Ultrasound",
+      "Equipment and Transducer Selection",
+      "Doppler Principles",
+      "Image Optimization",
+      "Session summary"
+    ]
+  },
+  {
+    "id": "18_02",
+    "title": "Vascular Ultrasound: Lower Limb Arteries",
+    "sections": [
+      "Session overview",
+      "Lower Limb Arterial Anatomy",
+      "Scanning Technique",
+      "Doppler Assessment",
+      "Pathology Recognition",
+      "Session summary"
+    ]
+  },
+  {
+    "id": "18_03",
+    "title": "Vascular Ultrasound: Venous Insufficiency – Session 1",
+    "sections": [
+      "Session overview",
+      "Venous Anatomy",
+      "Normal Venous Flow",
+      "Insufficiency Assessment",
+      "Scanning Protocols",
+      "Session summary"
+    ]
+  },
+  {
+    "id": "18_04",
+    "title": "Vascular Ultrasound: Venous Insufficiency – Session 2",
+    "sections": [
+      "Session overview",
+      "Advanced Venous Assessment",
+      "Reflux Quantification",
+      "Treatment Planning",
+      "Follow-up Protocols",
+      "Session summary"
+    ]
+  },
+  {
+    "id": "18_05",
+    "title": "Vascular Ultrasound: Extracranial Carotid & Vertebral Systems – Session 1",
+    "sections": [
+      "Session overview",
+      "Carotid Anatomy",
+      "Scanning Technique",
+      "Normal Flow Patterns",
+      "Stenosis Assessment",
+      "Session summary"
+    ]
+  },
+  {
+    "id": "18_06",
+    "title": "Vascular Ultrasound: Extracranial Carotid & Vertebral Systems – Session 2",
+    "sections": [
+      "Session overview",
+      "Vertebral Artery Assessment",
+      "Advanced Carotid Evaluation",
+      "Plaque Characterization",
+      "Clinical Correlation",
+      "Session summary"
+    ]
+  },
+  {
+    "id": "18_07",
+    "title": "Vascular Ultrasound: Lower Limb for DVT",
+    "sections": [
+      "Session overview",
+      "DVT Scanning Protocol",
+      "Compression Technique",
+      "Acute vs Chronic Thrombus",
+      "Risk Assessment",
+      "Session summary"
+    ]
+  },
+  {
+    "id": "18_08",
+    "title": "Vascular Ultrasound: Vascular Access",
+    "sections": [
+      "Session overview",
+      "Access Site Assessment",
+      "Guided Procedures",
+      "Complication Recognition",
+      "Safety Protocols",
+      "Session summary"
+    ]
+  }
+]

@@ -1,0 +1,54 @@
+### ULTRASOUND UPDATE — PART 1
+1. Delete any ultrasound course objects whose lessons array is empty.  
+   Keep only:
+   • us-abdominal  (19 lessons)
+   • us-gyn        (9 lessons)
+   • us-mens-health (3 lessons)
+
+2. Append these two new course objects:
+
+// -- Ultrasound – Vascular (id: us-vascular, 8 lessons)
+{
+  id: "us-vascular",
+  title: "Ultrasound – Vascular",
+  modality: "US",
+  description: "",
+  lessons: [
+    { id:"18_01", title:"Vascular Ultrasound: Introduction and Image Optimisation",                                   description:"", sections:[], videoUrl:"", externalUrl:"", durationSec:0, quiz:[], status:"notAttempted"},
+    { id:"18_02", title:"Vascular Ultrasound: Lower Limb Arteries",                                                    description:"", sections:[], videoUrl:"", externalUrl:"", durationSec:0, quiz:[], status:"notAttempted"},
+    { id:"18_03", title:"Vascular Ultrasound: Venous Insufficiency – Session 1",                                       description:"", sections:[], videoUrl:"", externalUrl:"", durationSec:0, quiz:[], status:"notAttempted"},
+    { id:"18_04", title:"Vascular Ultrasound: Venous Insufficiency – Session 2",                                       description:"", sections:[], videoUrl:"", externalUrl:"", durationSec:0, quiz:[], status:"notAttempted"},
+    { id:"18_05", title:"Vascular Ultrasound: Extracranial Carotid & Vertebral Systems – Session 1",                  description:"", sections:[], videoUrl:"", externalUrl:"", durationSec:0, quiz:[], status:"notAttempted"},
+    { id:"18_06", title:"Vascular Ultrasound: Extracranial Carotid & Vertebral Systems – Session 2",                  description:"", sections:[], videoUrl:"", externalUrl:"", durationSec:0, quiz:[], status:"notAttempted"},
+    { id:"18_07", title:"Vascular Ultrasound: Lower Limb for DVT",                                                     description:"", sections:[], videoUrl:"", externalUrl:"", durationSec:0, quiz:[], status:"notAttempted"},
+    { id:"18_08", title:"Vascular Ultrasound: Vascular Access",                                                        description:"", sections:[], videoUrl:"", externalUrl:"", durationSec:0, quiz:[], status:"notAttempted"}
+  ]
+},
+
+// -- Ultrasound – Musculoskeletal (id: us-msk, 11 lessons)
+{
+  id: "us-msk",
+  title: "Ultrasound – Musculoskeletal",
+  modality: "US",
+  description: "",
+  lessons: [
+    { id:"19_01", title:"Musculoskeletal Ultrasound: Introduction and Image Optimisation",          description:"", sections:[], videoUrl:"", externalUrl:"", durationSec:0, quiz:[], status:"notAttempted"},
+    { id:"19_02", title:"Musculoskeletal Ultrasound: Shoulder",                                     description:"", sections:[], videoUrl:"", externalUrl:"", durationSec:0, quiz:[], status:"notAttempted"},
+    { id:"19_03", title:"Musculoskeletal Ultrasound: Elbow",                                        description:"", sections:[], videoUrl:"", externalUrl:"", durationSec:0, quiz:[], status:"notAttempted"},
+    { id:"19_04", title:"Musculoskeletal Ultrasound: Wrist and Hand",                               description:"", sections:[], videoUrl:"", externalUrl:"", durationSec:0, quiz:[], status:"notAttempted"},
+    { id:"19_05", title:"Musculoskeletal Ultrasound: Adult Hip",                                    description:"", sections:[], videoUrl:"", externalUrl:"", durationSec:0, quiz:[], status:"notAttempted"},
+    { id:"19_06", title:"Musculoskeletal Ultrasound: Neonatal and Paediatric Hip",                  description:"", sections:[], videoUrl:"", externalUrl:"", durationSec:0, quiz:[], status:"notAttempted"},
+    { id:"19_07", title:"Musculoskeletal Ultrasound: Knee",                                         description:"", sections:[], videoUrl:"", externalUrl:"", durationSec:0, quiz:[], status:"notAttempted"},
+    { id:"19_08", title:"Musculoskeletal Ultrasound: Ankle and Foot",                               description:"", sections:[], videoUrl:"", externalUrl:"", durationSec:0, quiz:[], status:"notAttempted"},
+    { id:"19_09", title:"Musculoskeletal Ultrasound: Abdominal Wall and Groin",                     description:"", sections:[], videoUrl:"", externalUrl:"", durationSec:0, quiz:[], status:"notAttempted"},
+    { id:"19_10", title:"Musculoskeletal Ultrasound: Rheumatology",                                 description:"", sections:[], videoUrl:"", externalUrl:"", durationSec:0, quiz:[], status:"notAttempted"},
+    { id:"19_11", title:"Musculoskeletal Ultrasound: Guided Steroid Injections",                    description:"", sections:[], videoUrl:"", externalUrl:"", durationSec:0, quiz:[], status:"notAttempted"}
+  ]
+}
+
+3. **Acceptance for Part 1**
+   • Ultrasound modality page now shows FIVE cards (Abdominal, Gyn, Men’s Health, Vascular, MSK) with correct lesson counts.  
+   • No duplicates or empty cards.  
+   • Lint passes.
+
+Do NOT touch auth or payment code.
